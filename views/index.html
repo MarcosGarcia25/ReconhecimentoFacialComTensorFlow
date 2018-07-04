@@ -10,7 +10,7 @@
         <div class="center-content page-container">
 
 
-            <div class="row side-by-side">        
+            <div class="row side-by-side">
                 <div class="row">
                     <label for="imgUrlInput">Informe a URL de uma imagem:</label>
                     <input id="imgUrlInput" type="text" class="bold">
@@ -26,21 +26,21 @@
 
 
             <div id="facesContainer"></div>
-            
+
         </div>
 
         <script>
             let minConfidence = 0.1
-            
+
             //CARREGAR IMAGEM
             async function carregarImagem(url) {
                 const img = await requestExternalImage($('#imgUrlInput').val())
                 $('#inputImg').get(0).src = img.src
                 reconhecerFaces()
             }
-            
-            
-            //ATUALIZA A PAGINA COM O CARREGAMENTO DA IMAGEM E 
+
+
+            //ATUALIZA A PAGINA COM O CARREGAMENTO DA IMAGEM E REALIZA O RECONHECIMENTO
             async function reconhecerFaces() {
                 const inputImgEl = $('#inputImg').get(0)
                 const { width, height } = inputImgEl
@@ -60,7 +60,7 @@
                     $('#facesContainer').append(faceCanvas)
                 })
             }
-            
+
 
             // CARREGAMENTO DE IMAGEM EXTERNA(POR LINK)
             async function requestExternalImage(imageUrl) {
@@ -86,7 +86,7 @@
                     throw new Error('failed to load image from url: ' + imageUrl)
                 }
             }
-            
+
             // INICIALIZAÇÃO DAS FUNÇOES RESPONSAVEIS PELA DETECÇÃO E MARCAÇÃO DO PONTO DE REFERÊNCIA DA IMAGEM
             async function run() {
                 await faceapi.loadFaceDetectionModel('/')
