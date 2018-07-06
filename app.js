@@ -1,14 +1,13 @@
 const express = require('express')
 const path = require('path')
 const { get } = require('request')
-
 const app = express()
+
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const diretorioViews = path.join(__dirname, 'views')
-app.use(express.static(diretorioViews))
+app.use(express.static(path.join(__dirname, 'views')))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'base')))
 app.use(express.static(path.join(__dirname, 'dist')))
